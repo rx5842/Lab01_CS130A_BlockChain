@@ -51,5 +51,6 @@ void blockChain::findTransaction() {
   
 }
 bool blockChain::verifyAndPrint() {
+
   return true;
 }
