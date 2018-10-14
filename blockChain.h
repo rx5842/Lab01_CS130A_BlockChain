@@ -12,6 +12,10 @@ class block{
 public:
   block(int amt, std::string sender, std::string reciever);
   block * prev;
+  void setHash(std::string newHash);
+  std::string getHash() {return hash;};
+  std::string toString();
+  
 private:
   int amount;
   std::string sender;
@@ -29,6 +33,7 @@ public:
 private:
   int size;
   block* head;
+  std::string holdHash;
 };
 
 

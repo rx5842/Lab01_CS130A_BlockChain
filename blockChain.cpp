@@ -13,14 +13,36 @@ block::block(int amt, std::string sender, std::string reciever) {
   this->hash="";
 }
 
+void block::setHash(std::string newHash){
+  this->hash=newHash;
+}
+
+std::string block::toString() {
+  std::string result="";
+  
+  result += ("amount: " + amount);
+  result+="/n";
+  result += ("sender: " + sender);
+  result+="/n";
+  result += ("reciever: " + reciever);
+  result+="/n";
+  result += ("nonce: " + nonce);
+  result+="/n";
+  result += ("hash: " + hash);
+  result+="/n";
+  
+  return result;
+}
+
 blockChain::blockChain(){
   head=NULL;
   size=0;
+  holdHash="";
 }
 
 void blockChain::addTransaction(int amt, std::string sender, std::string reciever) {
   block * temp = new block(amt,sender,reciever);
-  //temp->nonce="a";
+  temp->setHash(holdHash);
   temp->prev=head;
   head=temp;
 }
