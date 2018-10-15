@@ -4,10 +4,14 @@
 #define BLOCKCHAIN_H
 
 #include<iostream>
+#include<cstring>
 #include<fstream>
 #include<cstdlib>
 #include<cctype>
 #include<string>
+#include <stdio.h>
+#include <string.h>
+#include <openssl/sha.h>
 
 class block{
 public:
@@ -21,6 +25,7 @@ public:
   std::string getAmount() {return std::to_string(amount);};
   std::string toHashString();
   std::string toPrint();
+  void generateSetNonce();
 
 private:
   int amount;
@@ -36,6 +41,7 @@ public:
   std::string addTransaction(int amt, std::string sender, std::string reciever);
   void findTransaction(std::string senderName);
   bool verifyAndPrint();
+  block* getHead() {return head;};
 private:
   int size;
   block* head;
