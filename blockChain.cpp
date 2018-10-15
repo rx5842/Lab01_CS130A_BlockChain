@@ -4,12 +4,13 @@
 #include<iostream>
 #include<fstream>
 #include<cstdlib>
+#include<cctype>
 
 block::block(int amt, std::string sender, std::string reciever) {
   this->amount = amt;
   this->sender=sender;
   this->reciever=reciever;
-  this->nonce="a";
+  this->nonce="";
   this->hash="";
 }
 
@@ -45,15 +46,22 @@ std::string block::toPrint() {
 blockChain::blockChain(){
   head=NULL;
   size=0;
-  holdHash="";
+  holdHash="Null";
 }
 
-void blockChain::addTransaction(int amt, std::string sender, std::string reciever) {
+std::string blockChain::addTransaction(int amt, std::string sender, std::string reciever) {
+
+  std::string result;
+  result=holdHash;
+
   block * temp = new block(amt,sender,reciever);
   temp->setHash(holdHash);
   temp->prev=head;
   head=temp;
+
   holdHash=temp->toHashString();
+
+  return result+"\n";
 }
 
 void blockChain::findTransaction(std::string senderName) {

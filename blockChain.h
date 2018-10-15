@@ -6,6 +6,7 @@
 #include<iostream>
 #include<fstream>
 #include<cstdlib>
+#include<cctype>
 #include<string>
 
 class block{
@@ -32,7 +33,7 @@ private:
 class blockChain{
 public:
   blockChain();
-  void addTransaction(int amt, std::string sender, std::string reciever);
+  std::string addTransaction(int amt, std::string sender, std::string reciever);
   void findTransaction(std::string senderName);
   bool verifyAndPrint();
 private:

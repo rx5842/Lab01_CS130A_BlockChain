@@ -1,4 +1,4 @@
-
+//By Ryan Xia
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -9,10 +9,10 @@ using namespace std;
 int main(int argv, char** argc){
 
   blockChain b;
-  b.addTransaction(1,"me","her");
-  b.addTransaction(2,"brandon","her");
-  b.addTransaction(3,"me","tom");
-  b.addTransaction(4,"chan","youtube");
+  std::cout<<b.addTransaction(1,"me","her");
+  std::cout<<b.addTransaction(2,"brandon","her");
+  std::cout<<b.addTransaction(3,"me","tom");
+  std::cout<<b.addTransaction(4,"chan","youtube");
 
   bool c = b.verifyAndPrint();
 
