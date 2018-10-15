@@ -9,5 +9,5 @@ all : chain
 chain:
 	g++ main.cpp blockChain.cpp -o chain -I $HOME/include -L $HOME/lib -lcrypto
 clean:
-	rm *.o
+	#rm *.o
 	rm chain

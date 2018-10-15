@@ -40,19 +40,28 @@ srand(time(NULL));
       
       cout<<"Add A Transaction \n";
       cout<<"Input the amount: ";
-      int amt;
+      int amt=0;
       cin>>amt;
-      cout<<"Input the Sender ";
-      string sender;
-      cin>>sender;
-      cout<<"Input the Receiver: ";
-      string receiver;
-      cin>>receiver;
-      
-      cout<<"The previous hash is: "<< b.addTransaction(amt, sender,receiver);
-      cout<<"\n";
-      
-      userSelection=getUserInput();
+      if(cin.fail()) {
+        cin.clear();
+        cin.ignore();
+        cout<<"Your input was not an Int! TRY AGAIN\n";
+        userSelection=1;
+        
+      }
+      else{
+        cout<<"Input the Sender ";
+        string sender;
+        cin>>sender;
+        cout<<"Input the Receiver: ";
+        string receiver;
+        cin>>receiver;
+        
+        cout<<"The previous hash is: "<< b.addTransaction(amt, sender,receiver);
+        cout<<"\n";
+        
+        userSelection=getUserInput();
+      }
     }
     else if(userSelection==2) {
       cout<<"Find Transactions \n";
