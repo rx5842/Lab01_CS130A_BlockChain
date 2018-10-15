@@ -15,7 +15,11 @@ public:
   void setHash(std::string newHash);
   std::string getHash() {return hash;};
   std::string getSender() {return sender;};
-  std::string toString();
+  std::string getReceiver() {return reciever;};
+  std::string getNonce() {return nonce;};
+  std::string getAmount() {return std::to_string(amount);};
+  std::string toHashString();
+  std::string toPrint();
 
 private:
   int amount;
