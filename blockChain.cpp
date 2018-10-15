@@ -18,19 +18,22 @@ void block::setHash(std::string newHash){
 }
 
 std::string block::toString() {
-  std::string result="";
-  
-  result += ("amount: " + amount);
-  result+="/n";
+  std::string result;
+
+  result += ("Block Info");
+  result+="\n";
+
+  result += ("amount: " + std::to_string(amount));
+  result+="\n";
   result += ("sender: " + sender);
-  result+="/n";
+  result+="\n";
   result += ("reciever: " + reciever);
-  result+="/n";
+  result+="\n";
   result += ("nonce: " + nonce);
-  result+="/n";
+  result+="\n";
   result += ("hash: " + hash);
-  result+="/n";
-  
+  result+="\n";
+
   return result;
 }
 
@@ -47,10 +50,24 @@ void blockChain::addTransaction(int amt, std::string sender, std::string recieve
   head=temp;
 }
 
-void blockChain::findTransaction() {
-  
+void blockChain::findTransaction(std::string senderName) {
+  block* current = head;
+  while(current != NULL) {
+    if(current->getSender() == senderName) {
+        std::cout<<current->toString();
+    }
+    current=current->prev;
+  }
+
+
 }
 bool blockChain::verifyAndPrint() {
+    block* current = head;
+    while(current!=NULL)
+    {
+      std::cout<<current->toString();
+      current = current->prev;
+    }
 
   return true;
 }

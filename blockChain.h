@@ -14,8 +14,9 @@ public:
   block * prev;
   void setHash(std::string newHash);
   std::string getHash() {return hash;};
+  std::string getSender() {return sender;};
   std::string toString();
-  
+
 private:
   int amount;
   std::string sender;
@@ -28,7 +29,7 @@ class blockChain{
 public:
   blockChain();
   void addTransaction(int amt, std::string sender, std::string reciever);
-  void findTransaction();
+  void findTransaction(std::string senderName);
   bool verifyAndPrint();
 private:
   int size;
