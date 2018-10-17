@@ -17,7 +17,26 @@ int getUserInput () {
   cout<<"3) Verify and Print \n";
   cout<<"4) Exit the Program \n";
   cin>>userSelection;
+  if(userSelection==0) {
+   // cout<<"0 input"<<endl;
+    cout<<"1) Add A Transaction \n";
+    cout<<"2) Find A Transaction with the name of Sender\n";
+    cout<<"3) Verify and Print \n";
+    cout<<"4) Exit the Program \n";
+    cin.clear();
+    cin.ignore(1,'\n');
+    cin>>userSelection;
+  }
   return userSelection;
+}
+
+bool isCleanString(string in) {
+  for(int i =0; i<in.size(); i++) {
+    if(!isdigit(in[i])) {
+      return false;
+     }
+  }
+  return true;
 }
 
 int main(int argv, char** argc){
@@ -32,6 +51,7 @@ srand(time(NULL));
   userSelection=getUserInput();
   
   while(userSelection!=4) {
+   
     if(userSelection<1||userSelection>4) {
       cout<<"Your input is not one of the options try again. \n";
       userSelection=getUserInput();
@@ -40,16 +60,16 @@ srand(time(NULL));
       
       cout<<"Add A Transaction \n";
       cout<<"Input the amount: ";
-      int amt=0;
-      cin>>amt;
-      if(cin.fail()) {
-        cin.clear();
-        cin.ignore();
+      string stringAmt="";
+      cin>>stringAmt;
+      int amt;
+     
+      if(!isCleanString(stringAmt)){
         cout<<"Your input was not an Int! TRY AGAIN\n";
         userSelection=1;
-        
       }
       else{
+        amt=std::stoi(stringAmt);
         cout<<"Input the Sender ";
         string sender;
         cin>>sender;
@@ -82,9 +102,10 @@ srand(time(NULL));
       }
       userSelection= getUserInput();
     }
+  
+    }
     
-    
-  }
+  
   
   /*srand(time(NULL));
 
